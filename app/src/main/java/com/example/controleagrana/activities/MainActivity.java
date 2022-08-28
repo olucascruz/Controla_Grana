@@ -6,18 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.controleagrana.R;
+import com.example.controleagrana.modal.ModalCadastro;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView listUsers;
-
-    private String[] users = {
-        "oLucas", "aLucas", "eLucas"
-    };
+    private FloatingActionButton btOpenCadastro;
+    private ArrayList<String> users = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +46,21 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), nomeSelecionado, Toast.LENGTH_SHORT).show();
             }
         });
+
+        btOpenCadastro = findViewById(R.id.opencadastro);
+        btOpenCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModalCadastro modalCadastro = new ModalCadastro();
+                modalCadastro.show(getSupportFragmentManager(), "myModal");
+            }
+        });
+
+
     }
+
+
+    public void addUser(String value){
+        users.add(value);
+    };
 }
