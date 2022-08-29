@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ public class ModalRelatorio extends DialogFragment {
     private ListView listContas;
     private Usuario user;
     private ArrayList<String> contaObject = new ArrayList<String>();
+    private TextView total;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,9 @@ public class ModalRelatorio extends DialogFragment {
         );
 
         listContas.setAdapter(adapter);
-
+        total = (TextView) view.findViewById(R.id.RelatorioTotal);
+        float totalFloat = ((UsuarioActivity) getActivity()).getDespesasValue();
+        total.setText("Total: R$"+totalFloat);
         return view;
     }
 

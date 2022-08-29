@@ -27,7 +27,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="170dp"
         android:layout_marginEnd="156dp"
+        android:layout_marginBottom="32dp"
         android:text="Delete uma conta"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editCodDel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/exitModalDelConta"
         app:layout_constraintTop_toTopOf="parent" />

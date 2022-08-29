@@ -24,6 +24,7 @@
             android:layout_height="48dp"
 
             android:layout_marginStart="27dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="87dp"
             android:backgroundTint="@color/design_default_color_primary_variant"
@@ -37,7 +38,7 @@
 
         <TextView
             android:id="@+id/modal_title_text"
-            android:layout_width="0dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="140dp"
             android:layout_marginTop="16dp"
@@ -45,6 +46,8 @@
             android:layout_marginBottom="50dp"
             android:text="Cadastre Usuario"
             android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/edit_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +64,6 @@
             android:minHeight="48dp"
             app:layout_constraintBottom_toTopOf="@+id/edit_cpf"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/modal_title_text"
             app:layout_constraintVertical_bias="0.0" />
@@ -85,11 +87,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="Salario: "
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"
             app:layout_constraintBottom_toTopOf="@+id/btcadastrar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_cpf" />
 
@@ -102,6 +103,7 @@
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/purple_200"
             android:text="@string/cadastrar"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
