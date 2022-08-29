@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Controla Grana</string>
     <string name="cadastrar">Cadastrar</string>
+    <string name="conta">Adicionar conta</string>
+    <string name="relatorio">Ver relatório</string>
+
+
 
 </resources>

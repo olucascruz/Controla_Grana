@@ -21,11 +21,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private ListView listUsers;
     private FloatingActionButton btOpenCadastro;
     private ArrayList<Usuario> usersObject = new ArrayList<Usuario>();
     private ArrayList<String> nameUsers = new ArrayList<String>();
-    private Usuario usuarioSelecionado;
+    private static Usuario usuarioSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Usuario criado", Toast.LENGTH_SHORT).show();
     };
 
-    public Usuario getUsusarioSelecionado(){
+    public static Usuario getUsusarioSelecionado(){
         return usuarioSelecionado;
     }
 }
