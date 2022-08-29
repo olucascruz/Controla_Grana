@@ -2,6 +2,7 @@ package com.example.controleagrana.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.controleagrana.R;
 import com.example.controleagrana.modal.ModalCadastro;
+import com.example.controleagrana.usuarios.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -21,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listUsers;
     private FloatingActionButton btOpenCadastro;
-    private ArrayList<String> users = new ArrayList<String>();
+    private ArrayList<Usuario> usersObject = new ArrayList<Usuario>();
+    private ArrayList<String> nameUsers = new ArrayList<String>();
+    private Usuario usuarioSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getApplicationContext(),
                 android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1, users
+                android.R.id.text1, nameUsers
 
         );
 
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
                 String nomeSelecionado = listUsers.getItemAtPosition(i).toString();
+                usuarioSelecionado = usersObject.get(i);
+                startActivity(new Intent(MainActivity.this, UsuarioActivity.class));
                 Toast.makeText(getApplicationContext(), nomeSelecionado, Toast.LENGTH_SHORT).show();
             }
         });
@@ -60,7 +66,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void addUser(String value){
-        users.add(value);
+    public void addUserName(String value){
+        nameUsers.add(value);
     };
+
+    public void addUserObject(String _nome, String _cpf, float _salario){
+        usersObject.add(new Usuario(_nome, _cpf, _salario));
+        Toast.makeText(getApplicationContext(), "Usuario criado", Toast.LENGTH_SHORT).show();
+    };
+
+    public Usuario getUsusarioSelecionado(){
+        return usuarioSelecionado;
+    }
 }

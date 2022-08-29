@@ -56,7 +56,11 @@ public class ModalCadastro extends DialogFragment {
         btCadastrar.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view){
-                ((MainActivity)getActivity()).addUser(inputNome.getText().toString());
+                ((MainActivity)getActivity()).addUserName(inputNome.getText().toString());
+                ((MainActivity)getActivity()).addUserObject(inputNome.getText().toString(),
+                                                            inputCPF.getText().toString(),
+                                                            Float.parseFloat(inputSalario.getText().toString()));
+
                 dismiss();
             }
         });
