@@ -15,13 +15,13 @@
         android:layout_marginBottom="526dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/textDelOrEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_backspace_24" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textDelOrEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/exitModalDelConta" />
 
     <Button
-        android:id="@+id/btDeletar"
+        android:id="@+id/btDelOrEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"

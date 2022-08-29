@@ -38,7 +38,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/modal_title_text_conta"
+            android:id="@+id/CadOrEdit"
             android:layout_width="114dp"
             android:layout_height="50dp"
             android:layout_marginStart="136dp"
@@ -66,7 +66,7 @@
             app:layout_constraintBottom_toTopOf="@+id/edit_descricao"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/modal_title_text_conta"
+            app:layout_constraintTop_toBottomOf="@+id/CadOrEdit"
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
@@ -103,13 +103,13 @@
             android:hint="Validade: "
             android:inputType="date"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/btcadastrarconta"
+            app:layout_constraintBottom_toTopOf="@+id/btcadoredit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_valor" />
 
         <Button
-            android:id="@+id/btcadastrarconta"
+            android:id="@+id/btcadoredit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"

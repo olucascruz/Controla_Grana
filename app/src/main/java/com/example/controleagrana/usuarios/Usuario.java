@@ -65,4 +65,14 @@ public class Usuario {
         return false;
     }
 
+    public Conta getContaCad(int _cod)
+    {
+        for(int i = 0; i < contas.size(); i++ ){
+            if(contas.get(i).getCodigo() == _cod) {
+                return getConta(i);
+            }
+        }
+        return null;
+    }
+
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,17 +18,14 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.controleagrana.R;
-import com.example.controleagrana.activities.MainActivity;
 import com.example.controleagrana.activities.UsuarioActivity;
+import com.example.controleagrana.contas.Conta;
 import com.example.controleagrana.usuarios.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Objects;
 
 public class ModalAddConta extends DialogFragment {
     private EditText inputCod;
@@ -63,7 +61,19 @@ public class ModalAddConta extends DialogFragment {
         inputDescricao = (EditText) view.findViewById(R.id.edit_descricao);
         inputValor = (EditText) view.findViewById(R.id.edit_valor);
         inputValidade = (EditText) view.findViewById(R.id.edit_validade);
-        Button btCadastrar = (Button) view.findViewById(R.id.btcadastrarconta);
+
+        String cadastro_or_edit = ((UsuarioActivity) requireActivity()).getCadOrEdit();
+        TextView title_cad_or_edit = view.findViewById(R.id.CadOrEdit);
+        Button bt_cad_or_edit = view.findViewById(R.id.btcadoredit);
+        if(cadastro_or_edit.matches("Cadastrar")){
+            title_cad_or_edit.setText("Cadastrar Conta");
+            bt_cad_or_edit.setText("Cadastrar");
+        }else{
+            title_cad_or_edit.setText("Editar Conta");
+            bt_cad_or_edit.setText("Editar");
+        }
+
+        Button btCadastrar = (Button) view.findViewById(R.id.btcadoredit);
         btCadastrar.setOnClickListener(new Button.OnClickListener(){
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -83,18 +93,31 @@ public class ModalAddConta extends DialogFragment {
                     e.printStackTrace();
                 }
                 if(!_cod.matches("") && !_valor.matches("") && !_descr.matches("") && !_validadeString.matches("")){
-                user.setConta(Integer.parseInt(_cod),  Float.parseFloat(_valor), _descr, _validade);
+                    if(cadastro_or_edit.matches("Cadastrar")) {
+                        user.setConta(Integer.parseInt(_cod), Float.parseFloat(_valor), _descr, _validade);
 
-                float numberDespesas = 0;
+                        dismiss();
+                    }else{
+                       Conta EditConta =((UsuarioActivity) requireActivity()).getEditUser();
+                       EditConta.setCodigo(Integer.parseInt(_cod));
+                       EditConta.setDescricao(_descr);
+                       EditConta.setValor(Float.parseFloat(_valor));
+                       EditConta.setValidade(_validade);
+                       ((UsuarioActivity) requireActivity()).setCadOrEdit("Cadastrar");
+                       dismiss();
 
-                for(int i = 0; i < user.getQntContas(); i++){
-                    numberDespesas += user.getConta(i).getValor();
-                }
-                ((UsuarioActivity) requireActivity()).setDespesas(numberDespesas);
-                ((UsuarioActivity) requireActivity()).setRestante(user.getSalario()-numberDespesas);
+                    }
 
 
-                dismiss();
+                    float numberDespesas = 0;
+
+                    for (int i = 0; i < user.getQntContas(); i++) {
+                        numberDespesas += user.getConta(i).getValor();
+                    }
+                    ((UsuarioActivity) requireActivity()).setDespesas(numberDespesas);
+                    ((UsuarioActivity) requireActivity()).setRestante(user.getSalario() - numberDespesas);
+
+
                 }else{
                     Toast.makeText(view.getContext(), "Coloque todos os dados!", Toast.LENGTH_SHORT).show();
                 }

@@ -9,20 +9,23 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.controleagrana.R;
+import com.example.controleagrana.contas.Conta;
 import com.example.controleagrana.modal.ModalAddConta;
-import com.example.controleagrana.modal.ModalCadastro;
-import com.example.controleagrana.modal.ModalDelConta;
+import com.example.controleagrana.modal.ModalBuscarConta;
 import com.example.controleagrana.modal.ModalRelatorio;
 import com.example.controleagrana.usuarios.Usuario;
 
 public class UsuarioActivity extends AppCompatActivity {
 
     private Usuario user;
+    private Conta editConta = null;
     private TextView salario;
     private TextView despesas;
     private TextView restante;
     private float despesasValue;
     private float restanteValue;
+    private String DeleteOrEdit;
+    private String CadOrEdit = "Cadastrar";
 
 
     @Override
@@ -39,8 +42,7 @@ public class UsuarioActivity extends AppCompatActivity {
         btCadastrarConta.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ModalAddConta modalCadastro = new ModalAddConta();
-                modalCadastro.show(getSupportFragmentManager(), "myModal");
+                openModalAddConta();
             };
         });
 
@@ -48,8 +50,19 @@ public class UsuarioActivity extends AppCompatActivity {
         btDeletarConta.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ModalDelConta modalDelete = new ModalDelConta();
+                DeleteOrEdit = "Delete";
+                ModalBuscarConta modalDelete = new ModalBuscarConta();
                 modalDelete.show(getSupportFragmentManager(), "myModal");
+            };
+        });
+
+        Button btEditConta = findViewById(R.id.openeditconta);
+        btEditConta.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeleteOrEdit = "Edit";
+                ModalBuscarConta modalBuscar = new ModalBuscarConta();
+                modalBuscar.show(getSupportFragmentManager(), "myModal");
             };
         });
 
@@ -72,6 +85,10 @@ public class UsuarioActivity extends AppCompatActivity {
         restante.setText("Restante: R$" + user.getSalario());
     }
 
+    public void openModalAddConta(){
+        ModalAddConta modalCadastro = new ModalAddConta();
+        modalCadastro.show(getSupportFragmentManager(), "myModal");
+    }
 
     public void setDespesas(float d){
         despesasValue = d;
@@ -90,5 +107,24 @@ public class UsuarioActivity extends AppCompatActivity {
 
     public Usuario getUser(){
         return user;
+    }
+
+    public String DeleteOrEdit(){
+        return DeleteOrEdit;
+    }
+
+    public void setCadOrEdit(String Cadastro_or_Edit){
+        CadOrEdit = Cadastro_or_Edit;
+    }
+
+    public String getCadOrEdit(){
+        return CadOrEdit;
+    }
+
+    public void setEditUser(Conta selected){
+        editConta = selected;
+    }
+    public Conta getEditUser(){
+        return editConta;
     }
 }
