@@ -75,12 +75,12 @@ public class UsuarioActivity extends AppCompatActivity {
 
     public void setDespesas(float d){
         despesasValue = d;
-        despesas.setText("Despesas: R$"+ despesasValue);
+        despesas.setText("Despesas: R$"+ d);
     }
 
     public  void setRestante(float r){
         restanteValue = r;
-        restante.setText("Restante: R$" + restanteValue);
+        restante.setText("Restante: R$" + r);
     }
 
     public float getDespesasValue(){

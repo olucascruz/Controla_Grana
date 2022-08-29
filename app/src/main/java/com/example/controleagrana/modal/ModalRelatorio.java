@@ -56,7 +56,7 @@ public class ModalRelatorio extends DialogFragment {
             String str = "Codigo: "+ conta.getCodigo() +
                    "\n"+ "Descrição: "+ conta.getDescricao()+
                    "\n"+ "Valor: "+ conta.getValor()+
-                   "\n"+ "Validade: " + dataFormatada;
+                   "\n"+ "Validade: " + dataFormatada + "\n\n";
            contaObject.add(str);
         }
 
