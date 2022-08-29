@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.controleagrana.R;
 import com.example.controleagrana.modal.ModalAddConta;
 import com.example.controleagrana.modal.ModalCadastro;
+import com.example.controleagrana.modal.ModalRelatorio;
 import com.example.controleagrana.usuarios.Usuario;
 
 public class UsuarioActivity extends AppCompatActivity {
@@ -19,6 +20,9 @@ public class UsuarioActivity extends AppCompatActivity {
     private TextView salario;
     private TextView despesas;
     private TextView restante;
+    private float despesasValue;
+    private float restanteValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +43,17 @@ public class UsuarioActivity extends AppCompatActivity {
             };
         });
 
+        Button btVerRelatorio = findViewById(R.id.openrelatorio);
+        btVerRelatorio.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModalRelatorio modalRelatorio = new ModalRelatorio();
+                modalRelatorio.show(getSupportFragmentManager(), "myModal");
+            };
+        });
+
         despesas = findViewById(R.id.textDespesas);
-        restante = findViewById(R.id.textDespesas);
+        restante = findViewById(R.id.textRestante);
 
 
 
@@ -51,8 +64,20 @@ public class UsuarioActivity extends AppCompatActivity {
 
 
     public void setDespesas(float d){
-        despesas.setText("Despesas: R$"+ d);
+        despesasValue = d;
+        despesas.setText("Despesas: R$"+ despesasValue);
     }
+
+    public  void setRestante(float r){
+        restanteValue = r;
+        restante.setText("Restante: R$" + restanteValue);
+    }
+
+    public float getDespesasValue(){
+        return despesasValue;
+    }
+
+
     public Usuario getUser(){
         return user;
     }

@@ -50,6 +50,7 @@ public class Usuario {
         return contas.get(index);
     }
 
+
     public int getQntContas(){
         return contas.size();
     }

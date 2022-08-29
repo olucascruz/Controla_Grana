@@ -90,6 +90,8 @@ public class ModalAddConta extends DialogFragment {
                     numberDespesas += user.getConta(i).getValor();
                 }
                 ((UsuarioActivity) requireActivity()).setDespesas(numberDespesas);
+                ((UsuarioActivity) requireActivity()).setRestante(user.getSalario()-numberDespesas);
+
 
                 dismiss();
             }
