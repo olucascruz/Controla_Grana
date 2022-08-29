@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.controleagrana.R;
 import com.example.controleagrana.modal.ModalAddConta;
 import com.example.controleagrana.modal.ModalCadastro;
+import com.example.controleagrana.modal.ModalDelConta;
 import com.example.controleagrana.modal.ModalRelatorio;
 import com.example.controleagrana.usuarios.Usuario;
 
@@ -40,6 +41,15 @@ public class UsuarioActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ModalAddConta modalCadastro = new ModalAddConta();
                 modalCadastro.show(getSupportFragmentManager(), "myModal");
+            };
+        });
+
+        Button btDeletarConta = findViewById(R.id.opendelconta);
+        btDeletarConta.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModalDelConta modalDelete = new ModalDelConta();
+                modalDelete.show(getSupportFragmentManager(), "myModal");
             };
         });
 

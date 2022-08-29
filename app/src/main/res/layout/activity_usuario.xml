@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/textDespesas"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginStart="75dp"
         android:layout_marginTop="600dp"
@@ -38,7 +38,7 @@
 
     <TextView
         android:id="@+id/textRestante"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="278dp"
@@ -55,27 +55,46 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/conta"
-        app:layout_constraintBottom_toTopOf="@+id/openrelatorio"
+        app:layout_constraintBottom_toTopOf="@+id/opendelconta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSalario" />
 
     <Button
+        android:id="@+id/opendelconta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/deletar"
+        app:layout_constraintBottom_toTopOf="@+id/openrelatorio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opencadastroconta"
+        app:layout_constraintVertical_bias="0.461" />
+
+    <Button
         android:id="@+id/openrelatorio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="375dp"
         android:text="@string/relatorio"
         app:layout_constraintBottom_toTopOf="@+id/textDespesas"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/opendelconta"
+        app:layout_constraintVertical_bias="0.393" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
