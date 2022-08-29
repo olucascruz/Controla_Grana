@@ -19,6 +19,7 @@ import com.example.controleagrana.contas.Conta;
 import com.example.controleagrana.usuarios.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -49,13 +50,13 @@ public class ModalRelatorio extends DialogFragment {
 
 
         user = ((UsuarioActivity)getActivity()).getUser();
-
         for(int i = 0; i < user.getQntContas(); i++){
            Conta conta = user.getConta(i);
-           String str = "Codigo: "+ conta.getCodigo() +
+            String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(conta.getValidade());
+            String str = "Codigo: "+ conta.getCodigo() +
                    "\n"+ "Descrição: "+ conta.getDescricao()+
                    "\n"+ "Valor: "+ conta.getValor()+
-                   "\n"+ "Data: " + conta.getValidade();
+                   "\n"+ "Validade: " + dataFormatada;
            contaObject.add(str);
         }
 
