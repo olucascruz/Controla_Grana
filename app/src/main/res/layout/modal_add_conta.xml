@@ -102,6 +102,7 @@
             android:layout_marginBottom="10dp"
             android:hint="Validade: "
             android:inputType="date"
+            android:maxLength="8"
             android:minHeight="48dp"
             app:layout_constraintBottom_toTopOf="@+id/btcadoredit"
             app:layout_constraintEnd_toEndOf="parent"
