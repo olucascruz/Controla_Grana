@@ -116,7 +116,11 @@ public class ModalAddConta extends DialogFragment {
                     }
                     ((UsuarioActivity) requireActivity()).setDespesas(numberDespesas);
                     ((UsuarioActivity) requireActivity()).setRestante(user.getSalario() - numberDespesas);
-
+                    if(numberDespesas > user.getSalario()){
+                        ((UsuarioActivity) requireActivity()).setAviso(true);
+                    }else{
+                        ((UsuarioActivity) requireActivity()).setAviso(false);
+                    }
 
                 }else{
                     Toast.makeText(view.getContext(), "Coloque todos os dados!", Toast.LENGTH_SHORT).show();

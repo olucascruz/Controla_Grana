@@ -22,6 +22,7 @@ public class UsuarioActivity extends AppCompatActivity {
     private TextView salario;
     private TextView despesas;
     private TextView restante;
+    private TextView aviso;
     private float despesasValue;
     private float restanteValue;
     private String DeleteOrEdit;
@@ -77,6 +78,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
         despesas = findViewById(R.id.textDespesas);
         restante = findViewById(R.id.textRestante);
+        aviso = findViewById(R.id.aviso);
 
 
 
@@ -95,9 +97,22 @@ public class UsuarioActivity extends AppCompatActivity {
         despesas.setText("Despesas: R$"+ d);
     }
 
-    public  void setRestante(float r){
+    public void setRestante(float r){
         restanteValue = r;
-        restante.setText("Restante: R$" + r);
+        if(r < 0){
+            restante.setText("Divida: R$" + r);
+        }else{
+            restante.setText("Restante: R$" + r);
+        }
+    }
+
+    public void setAviso(Boolean b){
+        if(b){
+            aviso.setText("Você está endividado!");
+
+        }else{
+            aviso.setText("");
+        }
     }
 
     public float getDespesasValue(){
