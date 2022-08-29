@@ -51,13 +51,17 @@ public class ModalDelConta extends DialogFragment {
         btDeletar.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view){
-                if(user.DelConta(Integer.parseInt(cod.getText().toString()))){
-                    Toast.makeText(view.getContext(), "Conta deletada", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(view.getContext(), "Conta não encontrada", Toast.LENGTH_SHORT).show();
-                }
+                if(!cod.getText().toString().matches("")) {
+                    if (user.DelConta(Integer.parseInt(cod.getText().toString()))) {
+                        Toast.makeText(view.getContext(), "Conta deletada", Toast.LENGTH_SHORT).show();
+                        dismiss();
+                    } else {
+                        Toast.makeText(view.getContext(), "Conta não encontrada", Toast.LENGTH_SHORT).show();
+                    }
 
-                dismiss();
+                }else{
+                    Toast.makeText(view.getContext(), "Coloque um código.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

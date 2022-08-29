@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -73,7 +74,7 @@ public class ModalAddConta extends DialogFragment {
                 String _valor = inputValor.getText().toString();
                 String _validadeString = inputValidade.getText().toString();
 
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
                 Date _validade = null;
 
                 try {
@@ -81,7 +82,7 @@ public class ModalAddConta extends DialogFragment {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
+                if(!_cod.matches("") && !_valor.matches("") && !_descr.matches("") && !_validadeString.matches("")){
                 user.setConta(Integer.parseInt(_cod),  Float.parseFloat(_valor), _descr, _validade);
 
                 float numberDespesas = 0;
@@ -94,6 +95,9 @@ public class ModalAddConta extends DialogFragment {
 
 
                 dismiss();
+                }else{
+                    Toast.makeText(view.getContext(), "Coloque todos os dados!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

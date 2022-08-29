@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,12 +57,19 @@ public class ModalCadastro extends DialogFragment {
         btCadastrar.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view){
-                ((MainActivity)getActivity()).addUserName(inputNome.getText().toString());
-                ((MainActivity)getActivity()).addUserObject(inputNome.getText().toString(),
-                                                            inputCPF.getText().toString(),
-                                                            Float.parseFloat(inputSalario.getText().toString()));
+                if(!inputNome.getText().toString().matches("") &&
+                        !inputCPF.getText().toString().matches("") &&
+                        !inputSalario.getText().toString().matches("")
+                ) {
+                    ((MainActivity) getActivity()).addUserName(inputNome.getText().toString());
+                    ((MainActivity) getActivity()).addUserObject(inputNome.getText().toString(),
+                            inputCPF.getText().toString(),
+                            Float.parseFloat(inputSalario.getText().toString()));
 
-                dismiss();
+                    dismiss();
+                }else{
+                    Toast.makeText(view.getContext(), "Coloque todos os dados!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;
