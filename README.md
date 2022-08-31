@@ -1,2 +1,2 @@
 # Controla_Grana
- App de controle financeiro (Em desenvolvimento)
+ App simples de controle financeiro (Em desenvolvimento)
