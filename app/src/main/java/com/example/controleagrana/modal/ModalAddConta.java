@@ -23,12 +23,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+
 public class ModalAddConta extends DialogFragment {
     private EditText inputCod;
     private EditText inputDescricao;
     private EditText inputValor;
     private EditText inputValidade;
     private Usuario user;
+    String _cod;
+    String _descr;
+    String _valor;
+    Date _validade = null;
+    String _validadeString;
 
 
     @Override
@@ -67,25 +74,8 @@ public class ModalAddConta extends DialogFragment {
         @SuppressLint("CutPasteId") Button btCadastrar = view.findViewById(R.id.btcadoredit);
         btCadastrar.setOnClickListener(view12 -> {
             user = ((UsuarioActivity) requireActivity()).getUser();
-            String _cod = inputCod.getText().toString();
-            String _descr = inputDescricao.getText().toString();
-            String _valor = inputValor.getText().toString();
-            String _validadeString = inputValidade.getText().toString();
 
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
-            Date _validade = null;
-
-            try {
-                _validade = formatter.parse(_validadeString);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            if(!_cod.matches("") &&
-                    !_valor.matches("") &&
-                    _valor.matches("^\\d+.?\\d{1,2}$") &&
-                    !_descr.matches("") &&
-                    !_validadeString.matches("")&&
-                    _validadeString.length() == 8 ){
+            if(valideDados()){
                 if(cadastro_or_edit.matches("Cadastrar")) {
                     user.setConta(Integer.parseInt(_cod), Float.parseFloat(_valor), _descr, _validade);
 
@@ -117,6 +107,53 @@ public class ModalAddConta extends DialogFragment {
 
 
         return view;
+    }
+
+    private boolean valideDados() {
+        boolean retorno = false;
+        _cod = inputCod.getText().toString();
+        _descr = inputDescricao.getText().toString();
+        _valor = inputValor.getText().toString();
+        _validadeString = inputValidade.getText().toString();
+
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+        formatter.setLenient(false);
+        try {
+            _validade = formatter.parse(_validadeString);
+        } catch (ParseException e) {
+            _validadeString = "";
+            e.printStackTrace();
+        }
+        if(!_cod.matches("")){
+            retorno = true;
+        }else{
+            inputCod.setError("*");
+            inputCod.requestFocus();
+            return false;
+        }
+        if(!_valor.matches("") && _valor.matches("^\\d+.?\\d{1,2}$")){
+            retorno = true;
+        }else{
+            inputValor.setError("*");
+            inputValor.requestFocus();
+            return false;
+        }
+        if(!_descr.matches("")){
+            retorno = true;
+        }else{
+            inputDescricao.setError("*");
+            inputDescricao.requestFocus();
+            return false;
+        }
+        if(!_validadeString.matches("") && _validadeString.length() == 8){
+            retorno = true;
+        }else{
+            inputValidade.setError("*");
+            inputValidade.requestFocus();
+            return false;
+        }
+
+        return retorno;
     }
 
 
