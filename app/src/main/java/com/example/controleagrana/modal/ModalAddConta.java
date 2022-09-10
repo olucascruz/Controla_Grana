@@ -82,6 +82,7 @@ public class ModalAddConta extends DialogFragment {
             }
             if(!_cod.matches("") &&
                     !_valor.matches("") &&
+                    _valor.matches("^\\d+.?\\d{1,2}$") &&
                     !_descr.matches("") &&
                     !_validadeString.matches("")&&
                     _validadeString.length() == 8 ){

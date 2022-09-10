@@ -49,7 +49,8 @@ public class ModalCadastro extends DialogFragment {
         btCadastrar.setOnClickListener(view12 -> {
             if(!inputNome.getText().toString().matches("") &&
                     !inputCPF.getText().toString().matches("") &&
-                    !inputSalario.getText().toString().matches("")
+                    !inputSalario.getText().toString().matches("") &&
+                    inputSalario.getText().toString().matches("^\\d+.?\\d{1,2}$")
             ) {
                 ((MainActivity) requireActivity()).addUserName(inputNome.getText().toString());
                 ((MainActivity) requireActivity()).addUserObject(inputNome.getText().toString(),
