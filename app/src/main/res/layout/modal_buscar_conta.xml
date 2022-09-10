@@ -18,7 +18,9 @@
         app:layout_constraintEnd_toStartOf="@+id/textDelOrEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_backspace_24" />
+        app:srcCompat="@drawable/ic_baseline_backspace_24"
+        android:contentDescription="@string/DescriptionBntExit"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/textDelOrEdit"
@@ -34,7 +36,8 @@
         app:layout_constraintBottom_toTopOf="@+id/editCodDel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/exitModalDelConta"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/editCodDel"
@@ -51,7 +54,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exitModalDelConta" />
+        app:layout_constraintTop_toBottomOf="@+id/exitModalDelConta"
+        tools:ignore="HardcodedText"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/btDelOrEdit"
@@ -65,6 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCodDel" />
+        app:layout_constraintTop_toBottomOf="@+id/editCodDel"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

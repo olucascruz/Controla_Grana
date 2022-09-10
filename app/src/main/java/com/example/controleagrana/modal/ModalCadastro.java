@@ -1,7 +1,5 @@
 package com.example.controleagrana.modal;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,41 +33,32 @@ public class ModalCadastro extends DialogFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saveInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saveInstanceState){
         super.onCreateView(inflater, container, saveInstanceState);
         Log.i("Script", "onCreate()");
 
         View view = inflater.inflate(R.layout.modal_add_user, container, false);
-        FloatingActionButton btExit = (FloatingActionButton) view.findViewById(R.id.exitModal);
-        btExit.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View view){
+        FloatingActionButton btExit = view.findViewById(R.id.exitModal);
+        btExit.setOnClickListener(view1 -> dismiss());
+
+        inputNome = view.findViewById(R.id.edit_name);
+        inputCPF = view.findViewById(R.id.edit_cpf);
+        inputSalario = view.findViewById(R.id.edit_salary);
+
+        Button btCadastrar = view.findViewById(R.id.btcadastrar);
+        btCadastrar.setOnClickListener(view12 -> {
+            if(!inputNome.getText().toString().matches("") &&
+                    !inputCPF.getText().toString().matches("") &&
+                    !inputSalario.getText().toString().matches("")
+            ) {
+                ((MainActivity) requireActivity()).addUserName(inputNome.getText().toString());
+                ((MainActivity) requireActivity()).addUserObject(inputNome.getText().toString(),
+                        inputCPF.getText().toString(),
+                        Float.parseFloat(inputSalario.getText().toString()));
+
                 dismiss();
-
-            }
-        });
-
-        inputNome = (EditText) view.findViewById(R.id.edit_name);
-        inputCPF = (EditText) view.findViewById(R.id.edit_cpf);
-        inputSalario = (EditText) view.findViewById(R.id.edit_salary);
-
-        Button btCadastrar = (Button) view.findViewById(R.id.btcadastrar);
-        btCadastrar.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                if(!inputNome.getText().toString().matches("") &&
-                        !inputCPF.getText().toString().matches("") &&
-                        !inputSalario.getText().toString().matches("")
-                ) {
-                    ((MainActivity) getActivity()).addUserName(inputNome.getText().toString());
-                    ((MainActivity) getActivity()).addUserObject(inputNome.getText().toString(),
-                            inputCPF.getText().toString(),
-                            Float.parseFloat(inputSalario.getText().toString()));
-
-                    dismiss();
-                }else{
-                    Toast.makeText(view.getContext(), "Coloque todos os dados!", Toast.LENGTH_SHORT).show();
-                }
+            }else{
+                Toast.makeText(view12.getContext(), "Coloque todos os dados!", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

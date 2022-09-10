@@ -2,9 +2,9 @@ package com.example.controleagrana.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,16 +19,17 @@ public class UsuarioActivity extends AppCompatActivity {
 
     private Usuario user;
     private Conta editConta = null;
+    @SuppressWarnings("FieldCanBeLocal")
     private TextView salario;
     private TextView despesas;
     private TextView restante;
     private TextView aviso;
     private float despesasValue;
-    private float restanteValue;
     private String DeleteOrEdit;
     private String CadOrEdit = "Cadastrar";
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,43 +38,29 @@ public class UsuarioActivity extends AppCompatActivity {
         Log.i("User", user.getNome());
         salario = findViewById(R.id.textSalario);
 
-        salario.setText("Salario: R$" +Float.toString(user.getSalario()));
+        salario.setText("Salario: R$" + user.getSalario());
 
         Button btCadastrarConta = findViewById(R.id.opencadastroconta);
-        btCadastrarConta.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openModalAddConta();
-            };
-        });
+        btCadastrarConta.setOnClickListener(view -> openModalAddConta());
 
         Button btDeletarConta = findViewById(R.id.opendelconta);
-        btDeletarConta.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DeleteOrEdit = "Delete";
-                ModalBuscarConta modalDelete = new ModalBuscarConta();
-                modalDelete.show(getSupportFragmentManager(), "myModal");
-            };
+        btDeletarConta.setOnClickListener(view -> {
+            DeleteOrEdit = "Delete";
+            ModalBuscarConta modalDelete = new ModalBuscarConta();
+            modalDelete.show(getSupportFragmentManager(), "myModal");
         });
 
         Button btEditConta = findViewById(R.id.openeditconta);
-        btEditConta.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DeleteOrEdit = "Edit";
-                ModalBuscarConta modalBuscar = new ModalBuscarConta();
-                modalBuscar.show(getSupportFragmentManager(), "myModal");
-            };
+        btEditConta.setOnClickListener(view -> {
+            DeleteOrEdit = "Edit";
+            ModalBuscarConta modalBuscar = new ModalBuscarConta();
+            modalBuscar.show(getSupportFragmentManager(), "myModal");
         });
 
         Button btVerRelatorio = findViewById(R.id.openrelatorio);
-        btVerRelatorio.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ModalRelatorio modalRelatorio = new ModalRelatorio();
-                modalRelatorio.show(getSupportFragmentManager(), "myModal");
-            };
+        btVerRelatorio.setOnClickListener(view -> {
+            ModalRelatorio modalRelatorio = new ModalRelatorio();
+            modalRelatorio.show(getSupportFragmentManager(), "myModal");
         });
 
         despesas = findViewById(R.id.textDespesas);
@@ -92,20 +79,22 @@ public class UsuarioActivity extends AppCompatActivity {
         modalCadastro.show(getSupportFragmentManager(), "myModal");
     }
 
+    @SuppressLint("SetTextI18n")
     public void setDespesas(float d){
         despesasValue = d;
         despesas.setText("Despesas: R$"+ d);
     }
 
-    public void setRestante(float r){
-        restanteValue = r;
-        if(r < 0){
-            restante.setText("Divida: R$" + r);
+    @SuppressLint("SetTextI18n")
+    public void setRestante(float restanteValue){
+        if(restanteValue < 0){
+            restante.setText("Divida: R$" + restanteValue);
         }else{
-            restante.setText("Restante: R$" + r);
+            restante.setText("Restante: R$" + restanteValue);
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void setAviso(Boolean b){
         if(b){
             aviso.setText("Você está endividado!");

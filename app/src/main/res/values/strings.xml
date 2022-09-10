@@ -5,9 +5,9 @@
     <string name="relatorio">Ver relatório</string>
     <string name="deletar">Deletar Conta</string>
     <string name="editar">Editar Conta</string>
-
-
-
+    <string name="descriptionButtonAddUser">Botão para adicionar usuario</string>
+    <string name="DescriptionBntExit">Botão para voltar</string>
+    <string name="titleModalCadastrar">Cadastre Usuario</string>
 
 
 </resources>

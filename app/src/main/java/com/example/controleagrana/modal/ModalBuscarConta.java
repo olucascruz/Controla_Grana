@@ -1,5 +1,6 @@
 package com.example.controleagrana.modal;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +20,6 @@ import com.example.controleagrana.activities.UsuarioActivity;
 import com.example.controleagrana.usuarios.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Objects;
 
 public class ModalBuscarConta extends DialogFragment {
 
@@ -31,23 +31,18 @@ public class ModalBuscarConta extends DialogFragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.modal_buscar_conta, container, false);
 
-        FloatingActionButton btExit = (FloatingActionButton) view.findViewById(R.id.exitModalDelConta);
-        btExit.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                dismiss();
+        FloatingActionButton btExit = view.findViewById(R.id.exitModalDelConta);
+        btExit.setOnClickListener(view1 -> dismiss()); //lambda: onclick fecha o madal
 
-            }
-        });
-
-        user = ((UsuarioActivity)getActivity()).getUser();
-        DeleteOrString = ((UsuarioActivity)getActivity()).DeleteOrEdit();
+        user = ((UsuarioActivity) requireActivity()).getUser();
+        DeleteOrString = ((UsuarioActivity) requireActivity()).DeleteOrEdit();
 
         TextView textDelOrEdit = view.findViewById(R.id.textDelOrEdit);
         Button btDelOrEdit = view.findViewById(R.id.btDelOrEdit);
@@ -61,30 +56,31 @@ public class ModalBuscarConta extends DialogFragment {
         }
         cod = view.findViewById(R.id.editCodDel);
 
-        btDelOrEdit.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                if(!cod.getText().toString().matches("")) {
-                    if(DeleteOrString.matches("Delete")){
+        btDelOrEdit.setOnClickListener(view12 -> {
+            if(!cod.getText().toString().matches("")) {
+                if(DeleteOrString.matches("Delete")){
 
-                        if (user.DelConta(Integer.parseInt(cod.getText().toString()))) {
-                            Toast.makeText(view.getContext(), "Conta deletada", Toast.LENGTH_SHORT).show();
-                            dismiss();
-                        } else {
-                            Toast.makeText(view.getContext(), "Conta não encontrada", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }else{
-                        ((UsuarioActivity)getActivity()).setCadOrEdit("Editar");
-                        ((UsuarioActivity) requireActivity()).setEditUser(user.getContaCad(Integer.parseInt(cod.getText().toString())));
-                        ((UsuarioActivity)getActivity()).openModalAddConta();
+                    if (user.DelConta(Integer.parseInt(cod.getText().toString()))) {
+                        Toast.makeText(view12.getContext(), "Conta deletada", Toast.LENGTH_SHORT).show();
                         dismiss();
+                    } else {
+                        Toast.makeText(view12.getContext(), "Conta não encontrada", Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    if (user.DelConta(Integer.parseInt(cod.getText().toString()))) {
+                        ((UsuarioActivity) requireActivity()).setCadOrEdit("Editar");
+                        ((UsuarioActivity) requireActivity()).setEditUser(user.getContaCad(Integer.parseInt(cod.getText().toString())));
+                        ((UsuarioActivity) requireActivity()).openModalAddConta();
+                        dismiss();
+                    } else {
+                        Toast.makeText(view12.getContext(), "Conta não encontrada", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
 
-                else{
-                    Toast.makeText(view.getContext(), "Coloque um código.", Toast.LENGTH_SHORT).show();
-                }
+            else{
+                Toast.makeText(view12.getContext(), "Coloque um código.", Toast.LENGTH_SHORT).show();
             }
         });
 

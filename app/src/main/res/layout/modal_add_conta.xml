@@ -35,7 +35,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.423"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:contentDescription="@string/DescriptionBntExit" />
 
         <TextView
             android:id="@+id/CadOrEdit"
@@ -45,7 +46,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="142dp"
             android:layout_marginBottom="16dp"
-            android:text="Cadastre Usuario"
+            android:text="@string/titleModalCadastrar"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -67,7 +68,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/CadOrEdit"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="HardcodedText"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/edit_descricao"
@@ -80,7 +83,9 @@
             app:layout_constraintBottom_toTopOf="@+id/edit_valor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_cod" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_cod"
+            tools:ignore="HardcodedText"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/edit_valor"
@@ -93,7 +98,9 @@
             app:layout_constraintBottom_toTopOf="@+id/edit_validade"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_descricao" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_descricao"
+            tools:ignore="HardcodedText"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/edit_validade"
@@ -107,7 +114,9 @@
             app:layout_constraintBottom_toTopOf="@+id/btcadoredit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_valor" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_valor"
+            tools:ignore="HardcodedText"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/btcadoredit"
