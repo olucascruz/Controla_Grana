@@ -16,12 +16,18 @@
 
 ## Sobre o projeto
 
-- O Controla Grana é uma aplicação android simples de controle financeiro 
+- O Controla Grana é uma aplicação android simples de controle financeiro, com o propósito de estudo sobre orientação a objeto.
 
 ## Pré-requisitos
  - Android 5.0 (Lolipop)
  
 ## Funcionalidades
+- Adicionar Usuarios
+  - Cada usuario tem nome, CPF e salário.
+- Adicionar, Ver, Editar e Deletar contas.
+  - Cada conta tem seu usuario, código, descrição, valor e validade.
+- Sinalização se o valor das contas superar o salário.
+- Validação de campos/tratamento de erro.
 
 ## Tecnologias utilizadas
 - Java
