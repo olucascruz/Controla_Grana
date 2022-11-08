@@ -1,6 +1,5 @@
 # Controla_Grana <img src="https://user-images.githubusercontent.com/69447962/189688519-a5e171f3-fc7c-4d22-9a85-abc6a91e20bd.png" width="50" height="50"/>
 
-(Em desenvolvimento)
 <div align="center">
  <img alt="Tela Inicial" src="https://user-images.githubusercontent.com/69447962/189689481-03231a5c-8f05-4f3d-8db5-1f3acb23faa0.jpeg" height="300"/>
   <img alt="Tela Cadastro User" src="https://user-images.githubusercontent.com/69447962/189690195-7ecb4cf0-6890-4fe0-9a5d-1bf1511492e4.jpeg" height="300"/>
