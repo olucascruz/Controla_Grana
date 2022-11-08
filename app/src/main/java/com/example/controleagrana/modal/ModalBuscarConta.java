@@ -39,7 +39,7 @@ public class ModalBuscarConta extends DialogFragment {
         View view = inflater.inflate(R.layout.modal_buscar_conta, container, false);
 
         FloatingActionButton btExit = view.findViewById(R.id.exitModalDelConta);
-        btExit.setOnClickListener(view1 -> dismiss()); //lambda: onclick fecha o madal
+        btExit.setOnClickListener(view1 -> dismiss()); //lambda: onclick fecha o modal
 
         user = ((UsuarioActivity) requireActivity()).getUser();
         DeleteOrString = ((UsuarioActivity) requireActivity()).DeleteOrEdit();
